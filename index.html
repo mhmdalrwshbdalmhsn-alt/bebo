@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💖 بيبو - روح قلبي 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --rose: #e8436a;
+      --blush: #f7b7c5;
+      --cream: #fff5f7;
+      --deep: #6b1a2a;
+      --gold: #d4af7a;
+      --soft: #fde8ed;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Amiri', serif;
+      background: var(--cream);
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E💗%3C/text%3E%3C/svg%3E") 16 16, pointer;
+    }
+
+    /* =================== FLOATING HEARTS =================== */
+    .hearts-bg {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+      overflow: hidden;
+    }
+    .heart-float {
+      position: absolute;
+      bottom: -50px;
+      font-size: 1.4rem;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+      10%  { opacity: 0.7; }
+      80%  { opacity: 0.5; }
+      100% { transform: translateY(-110vh) rotate(25deg) scale(1.2); opacity: 0; }
+    }
+
+    /* =================== LOGIN PAGE =================== */
+    #login-page {
+      position: fixed; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+      background: radial-gradient(ellipse at center, #2d0011 0%, #0d0005 100%);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    #login-page.fade-out {
+      opacity: 0; transform: scale(1.1); pointer-events: none;
+    }
+
+    .login-stars {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: 0.1; transform: scale(0.8); }
+      to   { opacity: 1;   transform: scale(1.2); }
+    }
+
+    .login-box {
+      position: relative; z-index: 5;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(232,67,106,0.4);
+      border-radius: 30px;
+      padding: 50px 45px;
+      text-align: center;
+      width: 380px;
+      box-shadow: 0 0 60px rgba(232,67,106,0.25), inset 0 0 30px rgba(255,255,255,0.03);
+      animation: loginAppear 1.2s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+    @keyframes loginAppear {
+      from { opacity: 0; transform: translateY(60px) scale(0.8); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .login-heart {
+      font-size: 3.5rem;
+      display: block;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      margin-bottom: 10px;
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14%      { transform: scale(1.3); }
+      28%      { transform: scale(1); }
+      42%      { transform: scale(1.2); }
+      56%      { transform: scale(1); }
+    }
+
+    .login-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--blush);
+      margin-bottom: 6px;
+      text-shadow: 0 0 20px rgba(247,183,197,0.6);
+    }
+    .login-sub {
+      font-size: 0.9rem;
+      color: rgba(247,183,197,0.6);
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 14px 20px;
+      border: 1.5px solid rgba(232,67,106,0.4);
+      border-radius: 50px;
+      background: rgba(255,255,255,0.07);
+      color: white;
+      font-size: 1.1rem;
+      text-align: center;
+      letter-spacing: 4px;
+      outline: none;
+      transition: all 0.3s;
+      font-family: 'Amiri', serif;
+    }
+    .login-input::placeholder { letter-spacing: 1px; color: rgba(255,255,255,0.3); }
+    .login-input:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 20px rgba(232,67,106,0.35);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .login-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #e8436a, #c0233d);
+      color: white;
+      font-size: 1.2rem;
+      font-family: 'Dancing Script', cursive;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 25px rgba(232,67,106,0.4);
+      position: relative; overflow: hidden;
+    }
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(232,67,106,0.55);
+    }
+    .login-btn:active { transform: translateY(0); }
+
+    .login-error {
+      margin-top: 14px;
+      color: #ff6b8a;
+      font-size: 0.92rem;
+      animation: shake 0.4s ease;
+      display: none;
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-8px); }
+      75%      { transform: translateX(8px); }
+    }
+
+    /* =================== MAIN PAGE =================== */
+    #main-page {
+      display: none;
+      min-height: 100vh;
+    }
+    #main-page.show { display: block; }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #1a0008 0%, #3d0018 40%, #6b1a2a 100%);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 60px 20px;
+    }
+
+    .hero-bg-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(232,67,106,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212,175,122,0.1) 0%, transparent 50%);
+    }
+
+    .petals-container {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -30px;
+      font-size: 1.5rem;
+      animation: petalFall linear infinite;
+      opacity: 0;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+      5%   { opacity: 0.8; }
+      90%  { opacity: 0.5; }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(60px); opacity: 0; }
+    }
+
+    .hero-badge {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3.5rem, 10vw, 6.5rem);
+      color: white;
+      line-height: 1.1;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s forwards;
+      text-shadow: 0 0 40px rgba(232,67,106,0.6);
+    }
+
+    .hero-heart-big {
+      font-size: 4rem;
+      display: block;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      margin: 10px 0;
+      opacity: 0;
+      animation: heartbeat 1.4s ease-in-out infinite, fadeUp 0.9s 0.7s forwards;
+    }
+
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: var(--blush);
+      margin: 20px 0 30px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-names {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--gold);
+      opacity: 0;
+      animation: fadeUp 0.9s 1.1s forwards;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 30px;
+      font-size: 0.8rem; color: rgba(255,255,255,0.4);
+      animation: bounce 2s infinite;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(8px); }
+    }
+
+    /* =================== SECTIONS =================== */
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      color: var(--rose);
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--rose), transparent);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    /* =================== PHOTO GALLERY =================== */
+    .gallery-wrap {
+      background: linear-gradient(180deg, #fff5f7 0%, #ffe8ed 100%);
+      padding: 80px 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: 0 10px 35px rgba(107,26,42,0.15);
+      opacity: 0;
+      transform: translateY(60px) scale(0.9) rotate(-2deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .photo-card:nth-child(even) { transform: translateY(60px) scale(0.9) rotate(2deg); }
+    .photo-card.visible {
+      animation: cardReveal 0.9s cubic-bezier(0.34,1.2,0.64,1) forwards;
+    }
+
+    @keyframes cardReveal {
+      0%   { opacity: 0; transform: translateY(80px) scale(0.85) rotate(-3deg); }
+      60%  { transform: translateY(-10px) scale(1.03) rotate(1deg); }
+      100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    }
+
+    .photo-card:hover {
+      transform: translateY(-12px) scale(1.04) rotate(1deg) !important;
+      box-shadow: 0 20px 50px rgba(232,67,106,0.3);
+      z-index: 2;
+    }
+
+    .photo-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .photo-card:hover img { transform: scale(1.08); }
+
+    .photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(107,26,42,0.7) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex; align-items: flex-end;
+      padding: 20px;
+    }
+    .photo-card:hover .photo-overlay { opacity: 1; }
+    .photo-caption {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* =================== VIDEO SECTION =================== */
+    .video-wrap {
+      background: linear-gradient(160deg, #1a0008, #3d0018);
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .video-container {
+      max-width: 720px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(232,67,106,0.4);
+      border: 2px solid rgba(232,67,106,0.3);
+    }
+    .video-container video {
+      width: 100%; display: block;
+      background: #0d0005;
+    }
+
+    /* =================== LOVE LETTER =================== */
+    .letter-wrap {
+      background: linear-gradient(180deg, #fff5f7, #ffe8ed);
+      padding: 80px 20px;
+    }
+    .letter-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px;
+      padding: 50px 45px;
+      box-shadow: 0 15px 50px rgba(107,26,42,0.12);
+      border: 1px solid rgba(232,67,106,0.15);
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease;
+    }
+    .letter-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* =================== REASONS =================== */
+    .reason-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(107,26,42,0.08);
+      border: 1px solid rgba(232,67,106,0.12);
+      transition: all 0.35s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .reason-card.visible {
+      animation: popIn 0.7s cubic-bezier(0.34,1.4,0.64,1) forwards;
+    }
+
+    @keyframes popIn {
+      0%   { opacity: 0; transform: translateY(30px) scale(0.85); }
+      70%  { transform: translateY(-5px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* =================== MUSIC BAR =================== */
+    .music-bar {
+      position: fixed;
+      bottom: 20px; left: 20px;
+      z-index: 200;
+      background: rgba(107,26,42,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(232,67,106,0.4);
+      border-radius: 50px;
+      padding: 10px 18px;
+      display: none;
+      align-items: center; gap: 12px;
+      box-shadow: 0 8px 25px rgba(232,67,106,0.3);
+    }
+    .music-bar.show { display: flex; }
+    .music-btn { background: none; border: none; color: white; font-size: 1.3rem; cursor: pointer; }
+    .wave-bar { width: 3px; background: var(--rose); animation: wave 0.8s infinite alternate; }
+    @keyframes wave { from { transform: scaleY(0.4); } to { transform: scaleY(1.2); } }
+    .paused { animation-play-state: paused !important; }
+  </style>
+</head>
+<body>
+
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- LOGIN PAGE -->
+<div id="login-page">
+  <div class="login-stars" id="loginStars"></div>
+  <div class="login-box">
+    <span class="login-heart">💖</span>
+    <div class="login-title">أهلاً بيبو 🌹</div>
+    <div class="login-sub">هذا المكان خُصِّص لكِ وحدكِ يا روح قلبي</div>
+    <input type="password" class="login-input" id="passInput" placeholder="✨ الباسورد (توتي) ✨"/>
+    <button class="login-btn" onclick="tryLogin()">💗 ادخلي يا بيبو 💗</button>
+    <div class="login-error" id="loginError">❌ يا حبيبتي الباسورد غلط! حاولي تاني 🥺</div>
+  </div>
+</div>
+
+<!-- MUSIC -->
+<div class="music-bar" id="musicBar">
+  <button class="music-btn" id="musicToggle" onclick="toggleMusic()">⏸️</button>
+  <div style="display:flex; gap:3px; align-items:center;">
+    <div class="wave-bar" style="height:10px;"></div>
+    <div class="wave-bar" style="height:16px;"></div>
+    <div class="wave-bar" style="height:12px;"></div>
+  </div>
+  <div style="font-family:'Dancing Script', cursive; color:var(--blush);">🎵 أغنية بيبو</div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="main-page">
+  <section class="hero" style="max-width:none;">
+    <div class="hero-bg-pattern"></div>
+    <div class="petals-container" id="petalsContainer"></div>
+    <div class="hero-badge">💌 مخصوص لأجمل إنسانة في الدنيا 💌</div>
+    <h1 class="hero-title">بيبو 💕</h1>
+    <span class="hero-heart-big">💗</span>
+    <p class="hero-sub">يا مامتي.. يا بنوتي.. يا روح قلبي<br>كل يوم بيعدي وأنا أكتشف إني بحبك أكتر وأكتر</p>
+    <div class="hero-names">حبيبتي ✨ بيبو ✨ ملكتي</div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="gallery-wrap">
+    <section style="max-width:none;">
+      <div class="section-title">📸 صور بيبو الجميلة</div>
+      <div class="gallery-grid">
+        <div class="photo-card"><img src="https://i.ibb.co/VYYBdMcm/image.jpg"><div class="photo-overlay"><span class="photo-caption">حبيبك محمد 💖</span></div></div>
+        <div class="photo-card"><img src="https://i.ibb.co/ksgY53Gj/image.jpg"><div class="photo-overlay"><span class="photo-caption">جمالك يا بيبو 🌹</span></div></div>
+        <div class="photo-card"><img src="https://i.ibb.co/ch5C406D/image.jpg"><div class="photo-overlay"><span class="photo-caption">ملكتي ✨</span></div></div>
+        <div class="photo-card"><img src="https://i.ibb.co/gFTYjKr3/image.jpg"><div class="photo-overlay"><span class="photo-caption">روحي 💗</span></div></div>
+        <div class="photo-card"><img src="https://i.ibb.co/wNm411zB/image.jpg"><div class="photo-overlay"><span class="photo-caption">حياتي 🎀</span></div></div>
+        <div class="photo-card"><img src="https://i.ibb.co/Pz9zVSJ3/image.jpg"><div class="photo-overlay"><span class="photo-caption">عشقي 🌸</span></div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="video-wrap">
+    <div class="video-container">
+      <video id="loveVideo" controls loop>
+        <source src="https://files.catbox.moe/4ltnmz.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background:#0d0005; padding:60px; text-align:center;">
+    <span style="font-size:3rem; animation: heartbeat 1.4s infinite; display:block;">💖</span>
+    <p style="font-family:'Dancing Script', cursive; color:var(--blush); font-size:2rem;">بحبك يا بيبو للأبد</p>
+  </footer>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="https://files.catbox.moe/wtt35t.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function tryLogin() {
+    const val = document.getElementById('passInput').value.trim().toLowerCase();
+    if (val === 'توتي' || val === 'toti' || val === 'bebo') {
+      document.getElementById('login-page').classList.add('fade-out');
+      setTimeout(() => {
+        document.getElementById('login-page').style.display = 'none';
+        document.getElementById('main-page').classList.add('show');
+        startMainPage();
+      }, 800);
+    } else { document.getElementById('loginError').style.display = 'block'; }
+  }
+
+  const music = document.getElementById('bgMusic');
+  const video = document.getElementById('loveVideo');
+
+  function startMainPage() {
+    music.play();
+    document.getElementById('musicBar').classList.add('show');
+
+    video.onplay = () => { music.pause(); document.getElementById('musicToggle').textContent = '▶️'; document.querySelectorAll('.wave-bar').forEach(b => b.classList.add('paused')); };
+    video.onpause = () => { music.play(); document.getElementById('musicToggle').textContent = '⏸️'; document.querySelectorAll('.wave-bar').forEach(b => b.classList.remove('paused')); };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.photo-card').forEach(el => observer.observe(el));
+  }
+
+  function toggleMusic() {
+    if (music.paused) { music.play(); document.getElementById('musicToggle').textContent = '⏸️'; document.querySelectorAll('.wave-bar').forEach(b => b.classList.remove('paused')); }
+    else { music.pause(); document.getElementById('musicToggle').textContent = '▶️'; document.querySelectorAll('.wave-bar').forEach(b => b.classList.add('paused')); }
+  }
+
+  // Hearts & Stars Logic
+  const hC = document.getElementById('heartsContainer');
+  for (let i = 0; i < 15; i++) {
+    const h = document.createElement('div'); h.className = 'heart-float'; h.textContent = '💖';
+    h.style.left = Math.random() * 100 + '%'; h.style.animationDuration = (Math.random() * 10 + 8) + 's';
+    hC.appendChild(h);
+  }
+</script>
+</body>
+</html>
